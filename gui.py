@@ -229,7 +229,7 @@ class MainWindow(QMainWindow):
         elif self.rbGRAY.isChecked():
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             height, width = image.shape
-
+            #help
             q_image = QImage(image.data, width, height, width, QImage.Format.Format_Grayscale8)
         else:
             height, width, channel = image.shape
