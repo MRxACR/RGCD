@@ -85,7 +85,7 @@
               <string>Gray (Niveau de gris)</string>
              </property>
             </widget>
-            <widget class="QRadioButton" name="rbGRAY_2">
+            <widget class="QRadioButton" name="rbNegatif">
              <property name="geometry">
               <rect>
                <x>20</x>

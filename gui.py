@@ -219,9 +219,13 @@ class MainWindow(QMainWindow):
         self.signals.show_status.emit(f"Camera {index} est sélectionnée")   
 
     def display_image(self, image : str):
+        if self.rbNegatif.isChecked():
+            image = abs(255 - image)
+        elif self.rbGRAY.isChecked():
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         height, width, channel = image.shape
         bytes_per_line = 3 * width
-        q_image = QImage(image.data, width, height, bytes_per_line, QImage.Format.Format_BGR888)
+        q_image = QImage(image.data, width, height, bytes_per_line, QImage.Format.Format_BGR888 if not self.rbGRAY.isChecked() else QImage.Format.Format_Grayscale16)
         pixmap = QPixmap.fromImage(q_image)
         self.image_label.setPixmap(pixmap)
 
