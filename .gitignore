@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 images/
+trash/
 
 # C extensions
 *.so
