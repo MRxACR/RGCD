@@ -59,47 +59,49 @@ class CameraWorker(QThread):
         self.signals.show_status.emit("Camera a démarer")
         self.is_stopped = False
         while not self.is_stopped & self.cam.isOpened():
-            with self.mp_hands.Hands(model_complexity=self.model_complexity, min_detection_confidence=self.min_detection_confidence, min_tracking_confidence=self.min_tracking_confidence) as hands:
-                success, image = self.cam.read()
-                image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                results = hands.process(image)
-                image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            try:
+                with self.mp_hands.Hands(model_complexity=self.model_complexity, min_detection_confidence=self.min_detection_confidence, min_tracking_confidence=self.min_tracking_confidence) as hands:
+                    success, image = self.cam.read()
+                    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+                    results = hands.process(image)
+                    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-                if results.multi_hand_landmarks:
-                    for hand_landmarks in results.multi_hand_landmarks:
-                        self.mp_drawing.draw_landmarks(
-                            image,
-                            hand_landmarks,
-                            self.mp_hands.HAND_CONNECTIONS,
-                            self.mp_drawing_styles.get_default_hand_landmarks_style(),
-                            self.mp_drawing_styles.get_default_hand_connections_style()
-                            )
-                        
-                # find postion of Hand landmarks      
-                lmList = []
-                if results.multi_hand_landmarks:
-                    myHand = results.multi_hand_landmarks[0]
-                    for id, lm in enumerate(myHand.landmark):
-                        h, w, c = image.shape
-                        cx, cy = int(lm.x * w), int(lm.y * h)
-                        lmList.append([id, cx, cy])          
+                    if results.multi_hand_landmarks:
+                        for hand_landmarks in results.multi_hand_landmarks:
+                            self.mp_drawing.draw_landmarks(
+                                image,
+                                hand_landmarks,
+                                self.mp_hands.HAND_CONNECTIONS,
+                                self.mp_drawing_styles.get_default_hand_landmarks_style(),
+                                self.mp_drawing_styles.get_default_hand_connections_style()
+                                )
+                            
+                    # find postion of Hand landmarks      
+                    lmList = []
+                    if results.multi_hand_landmarks:
+                        myHand = results.multi_hand_landmarks[0]
+                        for id, lm in enumerate(myHand.landmark):
+                            h, w, c = image.shape
+                            cx, cy = int(lm.x * w), int(lm.y * h)
+                            lmList.append([id, cx, cy])          
 
-                # Assigning variables for fingers position
-                if len(lmList) > 0:
-                    x1, y1 = lmList[4][1], lmList[4][2] # Thumb finger
-                    x2, y2 = lmList[8][1], lmList[8][2] #Index finger
-                    x3, y3 = lmList[12][1], lmList[12][2]  # Middle finger
-                    x4, y4 = lmList[16][1], lmList[16][2]  # Ring finger
-                    x5, y5 = lmList[20][1], lmList[20][2]  # Little finger
+                    # Assigning variables for fingers position
+                    if len(lmList) > 0:
+                        x1, y1 = lmList[4][1], lmList[4][2] # Thumb finger
+                        x2, y2 = lmList[8][1], lmList[8][2] #Index finger
+                        x3, y3 = lmList[12][1], lmList[12][2]  # Middle finger
+                        x4, y4 = lmList[16][1], lmList[16][2]  # Ring finger
+                        x5, y5 = lmList[20][1], lmList[20][2]  # Little finger
 
-                self.signals.image_display.emit(image)
-                
+                    self.signals.image_display.emit(image)
+            except Exception as ex:
+                pass   
                 
         self.signals.show_status.emit("Caméra est arrêtée")
+        self.cam.release()
 
     def stop(self):
         self.is_stopped = True
-        self.cam.release()
         
 class MainWindow(QMainWindow):
 
@@ -178,7 +180,7 @@ class MainWindow(QMainWindow):
         if not self.camera:
             self.signals.show_status.emit("Erreur : Aucune camera n'a été sélectionné")
             return 
-        
+        self.camera_changed()
         self.bgCamera = CameraWorker(self.signals)
         self.bgCamera.set_camera(self.camera)
         self.bgCamera.start()
@@ -186,6 +188,7 @@ class MainWindow(QMainWindow):
     def btnStop_action(self):
         if self.bgCamera:
             self.bgCamera.stop()
+            self.bgCamera = None
 
     def btnSave_action(self):
         pass
