@@ -82,48 +82,32 @@
                <property name="title">
                 <string>Mode</string>
                </property>
-               <widget class="QRadioButton" name="rbRGB">
-                <property name="geometry">
-                 <rect>
-                  <x>20</x>
-                  <y>30</y>
-                  <width>401</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>RGB (Normal)</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-               <widget class="QRadioButton" name="rbGRAY">
-                <property name="geometry">
-                 <rect>
-                  <x>20</x>
-                  <y>60</y>
-                  <width>401</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>Gray (Niveau de gris)</string>
-                </property>
-               </widget>
-               <widget class="QRadioButton" name="rbNegatif">
-                <property name="geometry">
-                 <rect>
-                  <x>20</x>
-                  <y>90</y>
-                  <width>401</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>Négatif (couleur inversé)</string>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QRadioButton" name="rbRGB">
+                  <property name="text">
+                   <string>RGB (Normal)</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbGRAY">
+                  <property name="text">
+                   <string>Gray (Niveau de gris)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbNegatif">
+                  <property name="text">
+                   <string>Négatif (couleur inversé)</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
@@ -137,61 +121,32 @@
                <property name="title">
                 <string>Action</string>
                </property>
-               <widget class="QRadioButton" name="rbRGM">
-                <property name="geometry">
-                 <rect>
-                  <x>20</x>
-                  <y>53</y>
-                  <width>341</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>Reconnaissance de geste de la main</string>
-                </property>
-               </widget>
-               <widget class="QRadioButton" name="rbCD">
-                <property name="geometry">
-                 <rect>
-                  <x>20</x>
-                  <y>83</y>
-                  <width>381</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>Reconnaissance et comptage de doigts</string>
-                </property>
-               </widget>
-               <widget class="QRadioButton" name="rbCS">
-                <property name="geometry">
-                 <rect>
-                  <x>20</x>
-                  <y>113</y>
-                  <width>381</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>Contrôle de souris</string>
-                </property>
-               </widget>
-               <widget class="QRadioButton" name="rbNONE">
-                <property name="geometry">
-                 <rect>
-                  <x>20</x>
-                  <y>26</y>
-                  <width>411</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>Aucune</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QRadioButton" name="rbNONE">
+                  <property name="text">
+                   <string>Aucune</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbCD">
+                  <property name="text">
+                   <string>Reconnaissance et comptage de doigts</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbCS">
+                  <property name="text">
+                   <string>Contrôle de souris</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
