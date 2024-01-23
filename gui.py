@@ -107,6 +107,7 @@ class MainWindow(QMainWindow):
 
     camera : object = None
     bgCamera : CameraWorker = None
+    default_image = cv2.imread("resources/images/blackscreen.png")
 
     def __init__(self):
         super().__init__()
@@ -146,6 +147,8 @@ class MainWindow(QMainWindow):
             }
             camera_label = f"Camera {camera_info['index']} - {camera_info['width']}x{camera_info['height']} - {camera_info['fps']:.2f} fps"
             self.cbCamera.addItem(camera_label)
+        
+        self.display_image(self.default_image)
     
     def check_available_cameras(self):
         available_cameras = []
@@ -189,6 +192,7 @@ class MainWindow(QMainWindow):
         if self.bgCamera:
             self.bgCamera.stop()
             self.bgCamera = None
+            self.display_image(self.default_image)
 
     def btnSave_action(self):
         pass
