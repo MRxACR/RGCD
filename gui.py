@@ -1,6 +1,6 @@
 import sys
 from PyQt6 import uic
-from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QDialog
+from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QDialog, QFileDialog
 from PyQt6.QtGui import QPixmap, QImage, QImageReader
 from PyQt6.QtCore import Qt, QThread
 import cv2
@@ -101,12 +101,14 @@ class CameraWorker(QThread):
                         x4, y4 = lmList[16][1], lmList[16][2]  # Ring finger
                         x5, y5 = lmList[20][1], lmList[20][2]  # Little finger
 
+                    
                     self.signals.image_display.emit(image)
             except Exception as ex:
                 pass   
                 
         self.signals.camera_stoped.emit()
         self.cam.release()
+
 
     def stop(self):
         self.is_stopped = True
@@ -115,7 +117,7 @@ class MainWindow(QMainWindow):
 
     camera : object = None
     bgCamera : CameraWorker = None
-    default_image = cv2.imread("resources/images/blackscreen.png")
+    default_image = cv2.imread("resources/images/blackscreen.jpg")
     saveIndex = 1
     output_folder = "images/"
 
@@ -168,6 +170,8 @@ class MainWindow(QMainWindow):
                 available_cameras.append(cap)
                 cap.release()
         return available_cameras
+    
+
 
     def connect_events(self):
 
@@ -186,6 +190,7 @@ class MainWindow(QMainWindow):
             self.btnStart : self.btnStart_action,
             self.btnStop : self.btnStop_action,
             self.btnSave : self.btnSave_action,
+            self.btnSavePath : self.btnSave_path,
         }
 
         for buttons, action in buttons_actions.items():
@@ -210,6 +215,21 @@ class MainWindow(QMainWindow):
         images_filename = os.path.join(self.output_folder, f'image_{self.saveIndex}.png')
         cv2.imwrite(images_filename, self.current_image)
         self.saveIndex += 1
+        self.signals.show_status.emit(f"Image enregistrée avec succès dans : {self.output_folder}")
+
+    def btnSave_path(self):       
+        options = QFileDialog.Option
+        options = QFileDialog.Option.ShowDirsOnly 
+        options |= QFileDialog.Option.DontUseNativeDialog
+
+        directory = QFileDialog.getExistingDirectory(self, "Choisir un répertoire d'enrengistrement", self.output_folder, options=options)
+        if directory:
+            self.output_folder = directory
+            self.signals.show_status.emit(f"Répertoire d'enregistrement sélectionné : {directory}")
+        else:
+            self.signals.show_status.emit("Répertoire d'enregistrement non sélectionné.")
+
+
 
     def camera_changed(self):
 
