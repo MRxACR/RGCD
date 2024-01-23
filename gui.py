@@ -6,6 +6,7 @@ from PyQt6.QtCore import Qt, QThread
 import cv2
 import time
 import mediapipe as mp
+import os
 
 from PyQt6.QtCore import pyqtSignal, QObject
 
@@ -65,6 +66,10 @@ class CameraWorker(QThread):
             try:
                 with self.mp_hands.Hands(model_complexity=self.model_complexity, min_detection_confidence=self.min_detection_confidence, min_tracking_confidence=self.min_tracking_confidence) as hands:
                     success, image = self.cam.read()
+
+                    if not success:
+                        continue
+                    
                     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                     results = hands.process(image)
                     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
@@ -111,6 +116,8 @@ class MainWindow(QMainWindow):
     camera : object = None
     bgCamera : CameraWorker = None
     default_image = cv2.imread("resources/images/blackscreen.png")
+    saveIndex = 1
+    output_folder = "images/"
 
     def __init__(self):
         super().__init__()
@@ -200,7 +207,9 @@ class MainWindow(QMainWindow):
             self.display_image(self.default_image)
 
     def btnSave_action(self):
-        pass
+        images_filename = os.path.join(self.output_folder, f'image_{self.saveIndex}.png')
+        cv2.imwrite(images_filename, self.current_image)
+        self.saveIndex += 1
 
     def camera_changed(self):
 
@@ -229,6 +238,8 @@ class MainWindow(QMainWindow):
 
     def display_image(self, image):
 
+        self.current_image = image
+
         if self.rbNegatif.isChecked():
             image = abs(255 - image)
             height, width, channel = image.shape
@@ -248,6 +259,8 @@ class MainWindow(QMainWindow):
 
         pixmap = QPixmap.fromImage(q_image)
         self.image_label.setPixmap(pixmap)
+
+        
 
     def camera_started(self):
         self.btnStart.setEnabled(False)
@@ -296,7 +309,7 @@ class Splash(QDialog):
         self.progressFrame.setFixedWidth(j)
 
     def loading_finish(self):
-        self.progressFrame.setFixedWidth(430)
+        self.progressFrame.setFixedWidth(630)
 
         self.main = MainWindow()
         self.main.show()
