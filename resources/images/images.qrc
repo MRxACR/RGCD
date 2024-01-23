@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="banner">
+    <file>logo.png</file>
+    <file>bleu &amp; white.png</file>
+    <file>simple white.png</file>
+  </qresource>
+</RCC>
