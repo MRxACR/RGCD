@@ -101,7 +101,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="groupBox_6">
+           <widget class="QGroupBox" name="box_action">
             <property name="minimumSize">
              <size>
               <width>225</width>
@@ -197,6 +197,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnSave">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -210,6 +213,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnStop">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="minimumSize">
                <size>
                 <width>0</width>

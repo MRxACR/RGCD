@@ -18,6 +18,9 @@ class Signals(QObject):
 
     show_status = pyqtSignal(str)
 
+    camera_started = pyqtSignal()
+    camera_stoped = pyqtSignal()
+
 class LoadingWorker(QThread):
     """
     This class is used when the app starts `Splash screen`, you can used it to implement `loading` logic,
@@ -36,7 +39,7 @@ class LoadingWorker(QThread):
         self.signals.loading_progress_signal_finished.emit()
 
 class CameraWorker(QThread):
-    
+    # TODO : use this to implement the actions radioboxs
     cam: cv2.VideoCapture
 
     def __init__(self, signals : Signals):
@@ -56,7 +59,7 @@ class CameraWorker(QThread):
         self.cam = cam
 
     def run(self):
-        self.signals.show_status.emit("Camera a démarer")
+        self.signals.camera_started.emit()
         self.is_stopped = False
         while not self.is_stopped & self.cam.isOpened():
             try:
@@ -97,7 +100,7 @@ class CameraWorker(QThread):
             except Exception as ex:
                 pass   
                 
-        self.signals.show_status.emit("Caméra est arrêtée")
+        self.signals.camera_stoped.emit()
         self.cam.release()
 
     def stop(self):
@@ -165,6 +168,8 @@ class MainWindow(QMainWindow):
             self.signals.image_display : self.display_image,
             self.cbCamera.currentIndexChanged : self.camera_changed,
             self.signals.show_status : lambda msg : self.statusbar.showMessage(msg),
+            self.signals.camera_started : self.camera_started,
+            self.signals.camera_stoped : self.camera_stoped,
         }
 
         for event, action in events_actions.items():
@@ -243,6 +248,26 @@ class MainWindow(QMainWindow):
 
         pixmap = QPixmap.fromImage(q_image)
         self.image_label.setPixmap(pixmap)
+
+    def camera_started(self):
+        self.btnStart.setEnabled(False)
+        self.box_action.setEnabled(False)
+        self.cbCamera.setEnabled(False)
+
+        self.btnSave.setEnabled(True)
+        self.btnStop.setEnabled(True)
+
+        self.display_image(self.default_image)
+
+    def camera_stoped(self):
+        self.btnStart.setEnabled(True)
+        self.box_action.setEnabled(True)
+        self.cbCamera.setEnabled(True)
+
+        self.btnSave.setEnabled(False)
+        self.btnStop.setEnabled(False)
+
+        self.display_image(self.default_image)
 
 class Splash(QDialog):
     def __init__(self,parent=None):
