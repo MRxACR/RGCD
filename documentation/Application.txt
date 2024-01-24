@@ -1,0 +1,22 @@
+L'application Tana Vision vise à capturer des vidéos en temps réel pour la détection et la 
+reconnaissance de gestes de la main. Son interface graphique est conçue avec PyQt6, 
+une bibliothèque utilisant l'API graphique Qt, un framework multiplateforme pour le développement
+d'interfaces riches et flexibles. PyQt6, en tant que liaison Python pour Qt, permet aux développeurs
+Python d'exploiter les fonctionnalités de Qt dans la création d'applications avec une interface u
+tilisateur graphique. OpenCV, une bibliothèque spécialisée dans le traitement d'images et de vidéos,
+est également utilisée. De plus, PyAutoGUI est intégrée pour le contrôle de la souris, offrant des 
+fonctionnalités telles que le déplacement du curseur et les clics. Pour le modèle de la main, 
+MediaPipe est employée, proposant des modules pré-entraînés pour la reconnaissance de gestes.
+    
+
+    
+Espaces utiliser:
+    Espace commande: Ou on choisi la camera a utiliser et le Répertoire ou les images seront stockez
+    Espace Mode : Ils contient des Checkbox  qui nous permettents de selectionner le mode  
+    couleur de la video RGB, niveau de gris ou couleur inversé
+    Espace Action : Ils contient des Checkbox qui nous permettents de selectionner l'action a 
+    entreprendre avec la main soit la reconnaissance de la main et le comptage de doigts soit le 
+    controle de la souris
+
+Espace commande 
+
