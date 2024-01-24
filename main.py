@@ -199,7 +199,7 @@ class MainWindow(QMainWindow):
                 'fourcc': int(cap.get(cv2.CAP_PROP_FOURCC)),
                 'is_color': cap.get(cv2.CAP_PROP_CONVERT_RGB),
             }
-            camera_label = f"Camera {camera_info['index']} - {camera_info['width']}x{camera_info['height']} - {camera_info['fps']:.2f} fps"
+            camera_label = f"Camera {camera_info['index']} -"
             self.cbCamera.addItem(camera_label)
         
         self.display_image(self.default_image)
@@ -277,8 +277,6 @@ class MainWindow(QMainWindow):
         else:
             self.signals.show_status.emit("Répertoire d'enregistrement non sélectionné.")
 
-
-
     def camera_changed(self):
 
         original_string = self.cbCamera.currentText()
@@ -289,7 +287,7 @@ class MainWindow(QMainWindow):
             return
 
         begin_text = "Camera "
-        end_text = " - "
+        end_text = " -"
 
         # Find the starting index of the begin_text
         begin_index = original_string.find(begin_text)
@@ -327,8 +325,6 @@ class MainWindow(QMainWindow):
 
         pixmap = QPixmap.fromImage(q_image)
         self.image_label.setPixmap(pixmap)
-
-        
 
     def camera_started(self):
         self.btnStart.setEnabled(False)
