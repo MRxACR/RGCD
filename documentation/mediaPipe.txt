@@ -55,7 +55,7 @@
     tels que le nez, les épaules, les coudes, les poignets, les hanches,
     les genoux et les chevilles.
 
-    3.1.Reconnaissance faciale
+    3.1.Reconnaissance faciale(Face Detection module):
         3.1.1 Définition:
             Le module de détection de visage analyse une image ou une vidéo pour identifier 
             les régions potentielles où se trouvent des visages. 
@@ -82,7 +82,7 @@
             applications en temps réel.
 
 
-    3.2.suivi de main :
+    3.2.suivi de main (Hands Module):
         3.2.1.Définition:
             Le suivi de main avec MediaPipe implique l'utilisation du module spécifique appelé "Hands". 
             Ce module utilise des modèles d'apprentissage profond pour détecter et suivre les mouvements
@@ -111,12 +111,44 @@
             rétroaction visuelle ou pour contrôler dynamiquement des éléments dans une application.
 
 
- Remarque Toujour entrain de faire des recherches !!!!!!!!!!!!!!!!!!!!!!!
-    uttebi3 ara wagi
 
-    3.3.Détection d'objet
-        MediaPipe propose également des modules pour la détection d'objets, 
-        permettant d'identifier et de suivre divers objets dans une séquence vidéo
+    3.3.Détection d'objet(Objectron module):
+        3.3.1.Définition:
+            Pour la détection d'objets MediaPipe utilise le module Objectron qui se concentre sur la détection d'objets 
+            en trois dimensions (3D) en temps réel.Ce module est spécifiquement conçu pour 
+            détecter et suivre des objets spécifiques dans des scènes en fournissant 
+            des informations sur leur position et leur orientation dans l'espace 3D.
+        3.3.2.Modèle d'Apprentissage Profond : 
+            Objectron utilise des modèles d'apprentissage profond basés sur des architectures 
+            de réseaux neuronaux convolutionnels (CNN) pour effectuer la détection d'objets en 3D. 
+            Ces modèles ont été pré-entraînés sur d'énormes ensembles de données contenant divers 
+            objets dans différentes situations et positions.
+        3.3.3.Détection en 3D : 
+            Lorsque vous appliquez le module Objectron à une image ou à une séquence vidéo, 
+            le modèle d'apprentissage profond analyse la scène pour détecter la présence et 
+            la position d'objets spécifiques en 3D. Les informations de sortie du modèle incluent 
+            les coordonnées spatiales des coins ou des points clés de l'objet détecté.
+        3.3.4.Localisation Précise : 
+            Objectron vise à fournir une localisation précise des objets dans l'espace 3D, 
+            ce qui signifie qu'il fournit des informations sur la position exacte de chaque 
+            coin de l'objet détecté par rapport à la caméra.
+        3.3.5.Rétroaction en Temps Réel : 
+            Les résultats de la détection d'objet peuvent être utilisés en temps réel pour des 
+            applications interactives, telles que la réalité augmentée. Par exemple, vous pourriez 
+            ancrer des objets virtuels à des objets réels détectés par Objectron.
+        3.3.6.Adaptabilité : 
+            Les modèles d'Objectron sont conçus pour être robustes et adaptatifs à différentes 
+            conditions, ce qui signifie qu'ils peuvent gérer des environnements variés, 
+            des angles de vue différents et des objets de différentes tailles.
+        
     3.4.Segmentation sématique 
-        La segmentation sémantique de MediaPipe permet de classer chaque pixel de l'image 
-        dans une catégorie spécifique, facilitant ainsi la compréhension de la scène.
+        3.4.1.Definition:
+            Pour la segmentation sémantique, MediaPipe propose le module appelé Selfie Segmentation. 
+            Ce module utilise des modèles d'apprentissage profond pour classer chaque pixel d'une 
+            image dans une catégorie spécifique, permettant ainsi de séparer le premier plan 
+            (par exemple, une personne) du fond.
+        3.4.2.Modèle d'Apprentissage Profond : 
+            Le module Selfie Segmentation utilise des modèles d'apprentissage profond, 
+            souvent basés sur des réseaux neuronaux convolutionnels (Convolutional Neural Network), qui ont été pré-entraînés 
+            sur des ensembles de données contenant des images annotées avec des informations de 
+            segmentation sémantique.
