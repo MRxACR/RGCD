@@ -2,7 +2,7 @@
 # TânaVision
 Système de detection et de reconnaissance de gestes
 
-![TânaVision](https://github.com/MRxACR/RGCD/resources/images/bleu & white.png)
+![TânaVision](https://github.com/MRxACR/RGCD/blob/main/resources/images/bleu & white.png)
 
 ## Description
 TânaVision est une simple application avec une `interface graphique` codée en language `Python` qui permet de détecter les mouvements de `la main` et de `commander` des dispositifs, l'exemple utiliser est de contrôler la localisation de `la souris` sur l'écran (X,Y).
