@@ -37,5 +37,5 @@ python3 main.py
 
 ## Contributeurs
 - [ALEM Abderrahmane](https://twitter.com/acrabdou)
-- [KLOUL Massinissa](https://twitter.com/MgSnake_22)
+- [KLOUL Massinissa](https://twitter.com/SnakeMAGIC2)
 - ABDELMEZIAM Farid
