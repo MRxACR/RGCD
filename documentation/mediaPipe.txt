@@ -152,3 +152,20 @@
             souvent basés sur des réseaux neuronaux convolutionnels (Convolutional Neural Network), qui ont été pré-entraînés 
             sur des ensembles de données contenant des images annotées avec des informations de 
             segmentation sémantique.
+        3.4.3.Analyse Pixel par Pixel : 
+            Lorsqu'on applique le module à une image, le modèle analyse chaque pixel de 
+            l'image et le classe dans une catégorie correspondant au premier plan (personne) 
+            ou au fond.
+        3.4.4.Information de Segment Précis : 
+            Le module Selfie Segmentation fournit des informations précises sur les régions 
+            de l'image qui appartiennent au sujet (personne) et celles qui appartiennent au fond. 
+            Cela permet de créer une segmentation sémantique détaillée de l'image.
+        3.4.5.Transparence Dynamique : 
+            L'une des caractéristiques intéressantes du module Selfie Segmentation est qu'il 
+            peut également fournir une transparence dynamique, permettant d'intégrer le sujet 
+            segmenté dans différents environnements virtuels.
+        3.4.6.Applications : 
+            Les applications de la segmentation sémantique sont variées, allant de l'application 
+            de filtres en temps réel sur des visages dans des applications de photographie à 
+            l'intégration transparente de personnes dans des arrière-plans virtuels lors de vidéos 
+            en direct ou de visioconférences.
