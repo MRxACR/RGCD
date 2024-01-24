@@ -113,7 +113,7 @@ class CameraWorker(QThread):
                 for landmark in hand_landmarks.landmark:
                     handLandmarks.append([landmark.x, landmark.y])
         x1, y1 = int(handLandmarks[4][0] * self.wCam), int(handLandmarks[4][1] * self.hCam)  # Thumb finger
-        pg.moveTo(x1 * sensitivity, y1 * sensitivity)
+        pg.moveTo((self.wCam - x1) * sensitivity, y1 * sensitivity)
 
     def finger_counter(self, image, results):
         fingerCount = 0 
@@ -127,10 +127,10 @@ class CameraWorker(QThread):
   
                 if handLabel == "Left" and handLandmarks[4][0] > handLandmarks[3][0]:
                     fingerCount = fingerCount+1
-                    cv2.putText(image,"Right raised", (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+                    cv2.putText(image,"Right raised", (self.wCam-200, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
                 elif handLabel == "Right" and handLandmarks[4][0] < handLandmarks[3][0]:
                     fingerCount = fingerCount+1
-                    cv2.putText(image,"Left raised", (20, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+                    cv2.putText(image,"Left raised", (self.wCam-200, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
 
                     
                 if handLandmarks[8][1] < handLandmarks[6][1]:#Index finger
@@ -149,8 +149,11 @@ class CameraWorker(QThread):
                     self.mp_hands.HAND_CONNECTIONS,
                     self.mp_drawing_styles.get_default_hand_landmarks_style(),
                     self.mp_drawing_styles.get_default_hand_connections_style())
-                
-            cv2.putText(image, f'Finger up={str(fingerCount)}', (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+            if (fingerCount) == 0:
+                cv2.putText(image, f'Fingers up={str(fingerCount)}', (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
+            else:
+                cv2.putText(image, f'Fingers up={str(fingerCount)}', (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+
 
         return image 
     
