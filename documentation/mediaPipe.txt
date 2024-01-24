@@ -1,5 +1,6 @@
              ****Media Pipe****
 
+
 1.MediaPipe
     1.1.Définition
         MediaPipe est une bibliothèque open source développée par Google Research qui permet
@@ -169,3 +170,13 @@
             de filtres en temps réel sur des visages dans des applications de photographie à 
             l'intégration transparente de personnes dans des arrière-plans virtuels lors de vidéos 
             en direct ou de visioconférences.
+
+    
+                    ***Introduction***
+
+        l'apprentissage profond, une discipline qui utilise des réseaux neuronaux complexes pour
+    extraire des informations riches à partir de données visuelles. Dans cette exploration, 
+    nous plongerons dans l'univers captivant de l'apprentissage profond en mettant en lumière 
+    quatre modules emblématiques qui illustrent la puissance de cette approche 
+    la Reconnaissance Faciale, le Suivi de Main, et la Détection d'Objet, 
+    ainsi que la Segmentation Sémantique.
