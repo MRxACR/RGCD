@@ -1,0 +1,122 @@
+             ****Media Pipe****
+
+1.MediaPipe
+    1.1.Définition
+        MediaPipe est une bibliothèque open source développée par Google Research qui permet
+        le développement d'applications de vision par ordinateur en temps réel. 
+        Elle offre des modules prêts à l'emploi pour diverses tâches, ce qui simplifie 
+        le processus de création d'applications de suivi de mouvements, de reconnaissance faciale,
+        et bien plus encore.
+
+1.2.Fonctionnement de MediaPipe
+
+    2.1.Modules
+        Pour Détecter les parties du corps MediaPipe utilise des modules utilisent des modèles
+        d'apprentissage profond pour effectuer des tâches telles que la détection de pose, 
+        la détection de mains, la détection faciale...etc
+
+    2.2.Modeles pré-entrainer
+    2.2.1.Definition:
+        Les "modules d'apprentissage" se réfèrent à des composants logiciels 
+        qui encapsulent des modèles d'apprentissage automatique ou profond pré-entraînés. Ces modèles ont été entraînés sur d'énormes ensembles de données pour effectuer des tâches spécifiques telles que la détection d'objets, la reconnaissance de visages, la segmentation d'images, etc. Ces modules sont souvent utilisés dans des bibliothèques ou des frameworks de vision par ordinateur pour fournir des fonctionnalités prêtes à l'emploi aux développeurs, 
+        évitant ainsi la nécessité d'entraîner des modèles à partir de zéro.
+        
+    2.2.2.Réseaux de Neurones Profonds (Deep Neural Networks) :
+        Les modules d'apprentissage de MediaPipe sont souvent basés sur des réseaux de neurones profonds. 
+        Ces réseaux sont des architectures composées de nombreuses couches (d'où le terme "profond") 
+        qui apprennent des représentations hiérarchiques des données d'entrée.
+        Entraînement sur de Grandes Quantités de Données : Les modèles sont entraînés 
+        sur des ensembles de données massifs et diversifiés pour garantir qu'ils peuvent 
+        généraliser à différentes situations. Par exemple, un modèle de détection de mains
+        peut être entraîné sur des milliers d'images et de vidéos contenant des mains dans
+        diverses poses et conditions d'éclairage.
+
+    2.2.3.Tâches Spécifiques : 
+        Chaque module d'apprentissage est conçu pour effectuer une tâche spécifique.
+        Par exemple, un module peut être entraîné pour détecter la pose du corps, 
+        un autre pour détecter des objets en 2D, et un autre pour la segmentation sémantique.
+
+    2.2.4.Prêt à l'Emploi : 
+        Les modules d'apprentissage de MediaPipe sont généralement fournis sous forme de modèles 
+        pré-entraînés. Cela signifie qu'ils sont prêts à être utilisés dans des applications 
+        sans nécessiter un nouvel entraînement sur des données supplémentaires.
+
+    2.2.5.Intégration dans des Applications : 
+        Ces modules d'apprentissage sont intégrés dans la bibliothèque MediaPipe, fournissant ainsi 
+        une interface conviviale pour les développeurs afin qu'ils puissent facilement tirer parti 
+        de ces fonctionnalités dans leurs propres applications.
+    
+
+
+1.3.Utilisation
+
+        La détection de pose de MediaPipe permet de suivre les mouvements humains en temps réel. 
+    Elle fournit des points de repère pour différentes parties du corps,
+    tels que le nez, les épaules, les coudes, les poignets, les hanches,
+    les genoux et les chevilles.
+
+    3.1.Reconnaissance faciale
+        3.1.1 Définition:
+            Le module de détection de visage analyse une image ou une vidéo pour identifier 
+            les régions potentielles où se trouvent des visages. 
+            Il utilise des modèles d'apprentissage profond pour effectuer cette détection avec précision.
+
+        3.1.2 Localisation des Points Clés : Une fois qu'un visage est détecté, 
+            le module de reconnaissance faciale localise les points clés 
+            importants tels que les yeux, les sourcils, le nez et la bouche.
+            Ces points clés sont essentiels pour caractériser la structure du visage.
+        
+        3.1.3 Extraction de Caractéristiques : 
+            Les coordonnées des points clés etd'autres caractéristiques du visage sont extraites,
+            fournissant une représentation numérique unique pour chaque visage.
+            Ces représentations permettent de distinguer un visage d'un autre.
+        
+        3.1.4 Comparaison ou Correspondance :
+            Les représentations numériques obtenues sont comparées à celles stockées dans une 
+            base de données pour identifier un visage spécifique.Cette étape peut également être
+            utilisée pour vérifier l'identité d'une personne.
+
+        3.1.5 Rétroaction en Temps Réel : 
+            En temps réel, les résultats de la détection et de la reconnaissance sont affichés, 
+            permettant une interaction continue avec l'utilisateur ou l'intégration dans des 
+            applications en temps réel.
+
+
+    3.2.suivi de main :
+        3.2.1.Définition:
+            Le suivi de main avec MediaPipe implique l'utilisation du module spécifique appelé "Hands". 
+            Ce module utilise des modèles d'apprentissage profond pour détecter et suivre les mouvements
+            des mains en temps réel.
+        3.2.2.Initialisation du Module : 
+            Pour commencer, vous devez initialiser le module de suivi de main dans votre code en 
+            utilisant la bibliothèque MediaPipe.
+        3.2.3.Capture de l'Image ou de la Vidéo :
+            Vous devez fournir une image ou une séquence vidéo qui contient des mains que
+            vous souhaitez suivre.
+        3.2.3.Application du Module : 
+            Appliquez le module de suivi de main à l'image ou à la vidéo.
+            Ceci renverra les résultats de détection, y compris les coordonnées 
+            des points clés de la main.
+        3.2.4.Analyse des Résultats :
+            Analysez les résultats renvoyés par le module pour obtenir des informations 
+            sur la positionet les mouvements de la main. Les coordonnées des points clés,
+            tels que les bouts des doigts et la base de la paume, peuvent être utilisées 
+            pour déterminer la pose de la main.
+        3.2.5.Utilisation des Informations de Suivi : 
+            Les informations de suivi de main peuvent être utilisées dans diverses applications, 
+            telles que des interfaces sans contact, des interactions en réalité virtuelle, 
+            des jeux, et d'autres applications interactives.
+        3.2.6.Rétroaction en Temps Réel : 
+            En temps réel, les résultats du suivi de main peuvent être utilisés pour fournir une 
+            rétroaction visuelle ou pour contrôler dynamiquement des éléments dans une application.
+
+
+ Remarque Toujour entrain de faire des recherches !!!!!!!!!!!!!!!!!!!!!!!
+    uttebi3 ara wagi
+
+    3.3.Détection d'objet
+        MediaPipe propose également des modules pour la détection d'objets, 
+        permettant d'identifier et de suivre divers objets dans une séquence vidéo
+    3.4.Segmentation sématique 
+        La segmentation sémantique de MediaPipe permet de classer chaque pixel de l'image 
+        dans une catégorie spécifique, facilitant ainsi la compréhension de la scène.
