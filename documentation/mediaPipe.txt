@@ -180,3 +180,13 @@
     quatre modules emblématiques qui illustrent la puissance de cette approche 
     la Reconnaissance Faciale, le Suivi de Main, et la Détection d'Objet, 
     ainsi que la Segmentation Sémantique.
+
+                ***Conclusion***
+        
+            En intégrant de manière experte des réseaux neuronaux profonds, MediaPipe de Google 
+    émerge comme un leader visionnaire dans le domaine de la vision par ordinateur. 
+    Ces modules emblématiques tels que la Reconnaissance Faciale, le Suivi de Main, 
+    la Détection d'Objet et la Segmentation Sémantique illustrent la maîtrise de MediaPipe 
+    dans l'exploitation de l'apprentissage profond. Cette approche novatrice redéfinit notre
+    relation avec la technologie en offrant une compréhension visuelle avancée,
+    ouvrant ainsi la voie à des expériences interactives et intuitives.
